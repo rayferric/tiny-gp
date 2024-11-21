@@ -404,18 +404,18 @@ tgp_state *tgp_init(
     size_t      tournament_size,
     uint32_t    seed
 ) {
+	// Start loading the problem
+	FILE *f = fopen(path, "r");
+	if (!f) {
+		return NULL;
+	}
+
 	// --- Allocate the state ---
 
 	tgp_state *tgp = malloc(sizeof(tgp_state));
 	memset(tgp, 0, sizeof(tgp_state));
 
 	// --- Load the problem ---
-
-	// Start loading the problem
-	FILE *f = fopen(path, "r");
-	if (!f) {
-		return NULL;
-	}
 
 	// Read the first line
 	fscanf(
@@ -571,6 +571,10 @@ void tgp_str(
 // Frees the memory allocated by any tgp_ functions.
 // tgp pointer is freed as well and must be re-allocated using tgp_init.
 void tgp_free(tgp_state *tgp) {
+	if (!tgp) {
+		return;
+	}
+
 	free(tgp->tmp_program);
 	for (size_t i = 0; i < tgp->pop_size; i++) {
 		free(tgp->programs[i]);
