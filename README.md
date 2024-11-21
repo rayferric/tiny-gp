@@ -45,6 +45,8 @@ for (int i = 0; i < 100; i++) {
 char str[4096];
 tgp_str(tgp, tgp_best(tgp), 2, str, 4096);
 printf("%s\n", str);
+
+tgp_free(tgp);
 ```
 
 # Python API
