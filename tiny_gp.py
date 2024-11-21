@@ -81,10 +81,11 @@ class TinyGP:
         )
 
         if not self.tgp:
-            raise ValueError("Failed to load the problem.")
+            raise FileNotFoundError("Failed to load the problem.")
 
     def __del__(self):
-        self.lib.tgp_free(self.tgp)
+        if self.tgp:
+            self.lib.tgp_free(self.tgp)
 
     def evolve(self):
         return self.lib.tgp_evolve(self.tgp)

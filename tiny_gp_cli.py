@@ -22,18 +22,19 @@ def main():
         print(f"Usage: {sys.argv[0]} [seed?] <path/to/problem.dat>")
         return
 
-    tgp = TinyGP(
-        path,
-        POP_SIZE,
-        PROG_SIZE,
-        CMD_MUTATION_PROB,
-        CROSS_VS_MUT_PROB,
-        TOURNAMENT_SIZE,
-        seed,
-    )
-    if not tgp:
-        print("Failed to load the problem")
-        return 1
+    try:
+        tgp = TinyGP(
+            path,
+            POP_SIZE,
+            PROG_SIZE,
+            CMD_MUTATION_PROB,
+            CROSS_VS_MUT_PROB,
+            TOURNAMENT_SIZE,
+            seed,
+        )
+    except Exception as e:
+        print(e)
+        return
 
     for i in range(100):
         tgp.evolve()

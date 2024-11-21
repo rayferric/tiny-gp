@@ -52,19 +52,19 @@ tgp_free(tgp);
 # Python API
 
 ```py
-tgp = TinyGP(
-	"problem.dat",
-	POP_SIZE,
-	PROG_SIZE,
-	CMD_MUTATION_PROB,
-	CROSS_VS_MUT_PROB,
-	TOURNAMENT_SIZE,
-	SEED,
-)
-
-if not tgp:
-	print("Failed to load the problem")
-	return 1
+try:
+	tgp = TinyGP(
+		"problem.dat",
+		POP_SIZE,
+		PROG_SIZE,
+		CMD_MUTATION_PROB,
+		CROSS_VS_MUT_PROB,
+		TOURNAMENT_SIZE,
+		SEED,
+	)
+except Exception as e:
+	print(e)
+	return
 
 for i in range(100):
 	tgp.evolve()
