@@ -1,4 +1,4 @@
-# TinyGP Project
+# TinyGP in C
 
 [TinyGP by Riccardo Poli](https://github.com/JesseBuesking/TinyGP-Java) rewritten in C with Python bindings.
 
